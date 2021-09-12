@@ -1,0 +1,408 @@
+.homepage {
+    //for cover entire screen of any size
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    //for cover entire screen of any size
+
+
+    display: flex;
+    flex-direction: column;
+
+
+    &_header {
+        flex: 0.1;
+
+        .header {
+            height: 4rem;
+            background-color: transparent !important;
+            overflow-y: hidden !important;
+        
+            .toolbar {
+                display: flex;
+                align-items: center;
+                overflow-y: hidden !important;
+        
+                &_heading {
+                    flex: 1;
+                    font-family: myfont;
+                    font-size: 1.7rem;
+                    letter-spacing: 0.075rem;
+                    word-spacing: -0.0225rem;
+                    cursor: pointer;
+                    overflow-y: hidden !important;
+                }
+        
+                button {
+                    width: 9rem !important;
+                    margin-left: 0.2rem !important;
+                    outline: none !important;
+                    box-shadow: none !important;
+                }
+            }
+        }
+    }
+
+
+    &_body {
+        flex: 0.9;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        overflow-y: hidden !important;
+
+        .leftdiv {
+            flex: 0.4;
+
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+
+            div {
+                flex: 0.9;
+
+                width: 29.55rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column; 
+
+                .p1 {
+                    width: 65.95%;
+                    font-size: 6.25rem;
+                    font-family: myfont;
+                    letter-spacing: 0;
+                    margin-left: 0.785rem;
+                    overflow-y: hidden !important;
+                }
+    
+                .p2 {
+                    width: 100%;
+                    text-align: center;
+                    font-family: myfont;
+    
+                    p {
+                        margin-top: 0.65rem;
+                    }
+                }
+            }
+
+            button {
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            margin-left: 3.45rem;
+            margin-top: -7rem;    
+        }
+
+        .rightdiv {
+            flex: 0.6;
+            display: flex;
+
+            div {
+                flex: 0.75;
+            }
+
+            img {
+                border-radius: 9000px;
+                height: 30rem;
+                width: 40rem;
+            }
+        }
+    }
+
+
+    &_footer {
+        .footer {
+            height: 4rem;
+        
+            a {
+                color: inherit;
+                font-size: 0.9rem;
+                transition-duration: 0.25s;
+                &:hover {
+                    color: #FA944B;
+                }
+            }
+        
+            .footer-copyright {
+                font-size: 0.825rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+@media(max-width: 1326px) {
+    .homepage {
+        &_body {
+            .leftdiv {
+                flex: 1;
+                
+                //make width till end of screen
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                //make height till end of screen
+                height: 100vh;
+
+                div {
+                    margin-top: 6.375rem;
+                }
+
+                button {
+                    margin-bottom: 2.875rem;
+                }
+            }
+            .rightdiv {
+                display: none;
+            }
+        }
+    }
+}
+@media(max-width: 935px) {
+    .homepage {
+        //header buttons
+        .toolbar {
+            #usersBtn, #restaurantsBtn {
+                display: none;
+            }
+        }
+    }
+}
+@media(max-width: 510px) {
+    .homepage {
+        //header buttons
+        .toolbar {
+            #signinBtn, #signupBtn {
+                width: 7rem !important;
+            }
+        }
+
+        &_body {
+            .leftdiv {
+                div {
+                    .p1 {
+                        font-size: 4.85rem;
+                        margin-left: 5.075rem;
+                    }
+                    .p2 {
+                        font-size: 0.95rem;
+                        p {
+                            overflow-y: hidden !important;                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 461px) {
+    .homepage {
+        //header
+        .toolbar {
+            p {
+                display: none !important;
+            }
+
+            div {
+                #signinBtn {
+                    font-size: 0.725rem;
+                }
+                #signupBtn {
+                    font-size: 0.725rem;
+                }
+            }
+        }
+
+        &_body {
+            .leftdiv {
+                div {
+                    .p1 {
+                        font-size: 4.75rem;
+                        margin-left: 5.885rem;
+                    }
+                    .p2 {
+                        font-size: 0.825rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 400px) {
+    .homepage {
+        &_body {
+            .leftdiv {
+                div {
+                    .p1 {
+                        font-size: 4.05rem;
+                        margin-left: 7.785rem;
+                    }
+                    .p2 {
+                        font-size: 0.725rem;
+                    }
+                }
+
+                button {
+                    width: 7.25rem;
+                    height: 2rem;
+                    overflow-y: hidden !important;
+                    font-size: 0.8rem !important;
+                    //mui icon
+                    .MuiSvgIcon-root {
+                        height: 0.9rem;
+                        width: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 350px) {
+    .homepage {
+        //header flex
+        .toolbar {
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            p {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        &_body {
+            .leftdiv {
+                div {
+                    .p1 {
+                        font-size: 3.85rem;
+                        margin-left: 8rem;
+                    }
+                    .p2 {
+                        font-size: 0.685rem;
+                    }
+                }
+
+                button {
+                    width: 6.775rem;
+                    font-size: 0.735rem !important;
+                }
+            }
+        }
+    }
+}
+@media(max-width: 330px) {
+    .homepage {
+        &_body {
+            .leftdiv {
+                button {
+                    width: 6.295rem;
+                    font-size: 0.65rem !important;
+                }
+            }
+        }    
+    }
+}
+@media(max-width: 310px) {
+    .homepage {
+        &_body {
+            .leftdiv {
+                div {
+                    .p1 {
+                        font-size: 3.15rem;
+                        margin-left: 10.25rem;
+                    }
+                    .p2 {
+                        font-size: 0.595rem;
+                    }
+                }
+
+                button {
+                    width: 6.225rem;
+                    font-size: 0.625rem !important;
+                }
+            }
+        }    
+    }
+}
+@media(max-width: 279px) {
+    .homepage {
+        //header flex
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                margin-top: 2rem;
+            }
+        }
+
+        &_body {
+            .leftdiv {
+                div {
+                    .p1 {
+                        font-size: 2.85rem;
+                        margin-left: 10.75rem;
+                    }
+                    .p2 {
+                        font-size: 0.505rem;
+                    }
+                }
+
+                button {
+                    width: 6.225rem;
+                    font-size: 0.625rem !important;
+                }
+            }
+        }
+    }
+}
+@media(max-width: 250px) {
+    .homepage {
+        //header
+        .toolbar {
+            p {
+                font-size: 1.15rem !important;
+            }
+        }
+    }
+}
+@media(max-width: 235px) {
+    .homepage {
+        //header
+        .toolbar {
+            div {
+                #signinBtn {
+                    display: block;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+@media(max-width: 250px) {
+    .homepage {
+        //header
+        .toolbar {
+            p {
+                font-size: 1.15rem !important;
+            }
+        }
+    }
+}

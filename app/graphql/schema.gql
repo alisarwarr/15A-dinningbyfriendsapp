@@ -1,0 +1,231 @@
+type Event {
+   result: String
+}
+
+
+#User
+type userType {
+   id: ID!
+   name: String!
+}
+
+
+#Restaurant
+type restaurantType {
+   id: ID!
+   name: String!
+   cuisine: String!
+   address: String!
+}
+
+
+#Userfriend
+type userfriendType {
+   id: ID!
+   name: String!
+#rest of edge's properties
+   edge_id: ID!
+   edge_label: String!
+   edge_outV_id: ID!
+   edge_inV_id: ID!
+}
+
+
+#Userrestaurant
+type userrestaurantType {
+   id: ID!
+   name: String!
+   cuisine: String!
+   address: String!
+#rest of edge's properties
+   edge_id: ID!
+   edge_label: String!
+   edge_outV_id: ID!
+   edge_inV_id: ID!
+}
+
+
+#Restaurantuser
+type restaurantuserType {
+   id: ID!
+   name: String!
+#rest of edge's properties
+   edge_id: ID!
+   edge_label: String!
+   edge_outV_id: ID!
+   edge_inV_id: ID!
+}
+
+
+#Restaurantuserreview
+type restaurantuserreviewType {
+   r_id: ID!
+   r_restaurantId_ExistInRestaurantsVertex: ID!                      #restaurant id
+   r_userId_ExistInUsersVertex: ID!                                  #reviewer id
+   r_userName_ExistInUsersVertex: String!                            #reviewer name
+   r_text: String!
+#rest of edge's properties
+   edge_id: ID!
+   edge_label: String!
+   edge_outV_id: ID!
+   edge_inV_id: ID!
+}
+
+
+#Restaurantuserreviewpersonalization
+type restaurantuserreviewpersonalizationType {
+   p_id: ID!
+   p_restaurantId_ExistInRestaurantsVertex: ID!                      #restaurant id
+   p_reviewId_ExistInReviewsVertex: ID!                              #review id
+   p_userId_ExistInUsersVertex: ID!                                  #personalizationer id
+   p_userName_ExistInUsersVertex: String!                            #personalizationer name   
+   p_useful: Boolean
+#rest of edge's properties
+   edge_id: ID!
+   edge_label: String!
+   edge_outV_id: ID!
+   edge_inV_id: ID!
+}
+
+
+#Restaurantuserreview_Restaurantuserreviewpersonalization ( special case )
+type restaurantuserreview_restaurantuserreviewpersonalization_Type {
+   _review: restaurantuserreviewType!
+   _personalization: restaurantuserreviewpersonalizationType         #(nullable)
+}
+
+
+type Query {
+   #User
+   allUsers: [userType!]
+   getUserByName(name: String!): userType
+
+
+   #Restaurant
+   allRestaurants: [restaurantType!]
+   getRestaurantByName(name: String!): restaurantType
+
+
+   #Userfriend
+   allUserfriends(id: ID!): [userfriendType!]
+   getUserfriendById(idFrom: ID!, idTo: ID!): userfriendType
+
+
+   #Userrestaurant
+   allUserrestaurants(id: ID!): [userrestaurantType!]
+   getUserrestaurantById(idFrom: ID!, idTo: ID!): userrestaurantType
+
+
+   #RestaurantUser
+   allRestaurantusers(id: ID!): [restaurantuserType!]
+   getRestaurantuserById(idFrom: ID!, idTo: ID!): restaurantuserType
+
+
+   #Restaurantuserreview
+   allRestaurantuserreviews(id: ID!): [restaurantuserreviewType!]
+   getRestaurantuserreviewByUserId(idFrom: ID!, idTo: ID!): restaurantuserreviewType
+
+
+   #Restaurantuserreviewpersonalization
+   allRestaurantuserreviewpersonalizations(id: ID!, hisId: ID!): [restaurantuserreviewpersonalizationType!]
+   getRestaurantuserreviewpersonalizationByUserId(idFrom: ID!, idTo: ID!, hisId: ID!): restaurantuserreviewpersonalizationType
+
+
+   #Restaurantuserreview_Restaurantuserreviewpersonalization ( special case )
+   all_Restaurantuserreviews_Restaurantuserreviewpersonalizations_InOneRestaurant_ByUserId(id: ID!, hisId: ID!): [restaurantuserreview_restaurantuserreviewpersonalization_Type!]
+   all_Restaurantuserreviews_Restaurantuserreviewpersonalizations_InAllRestaurants_ByUserId(id: ID!, hisId: ID!): [restaurantuserreview_restaurantuserreviewpersonalization_Type!]
+}
+
+
+type Mutation {
+   #User
+   createUser(name: String!): Event
+   deleteUser(id: ID!, name: String!): Event
+
+
+   #Restaurant
+   createRestaurant(name: String!, cuisine: String!, address: String!): Event
+   deleteRestaurant(id: ID!): Event
+
+
+   #Userfriend
+   createUserfriend(idFrom: ID!, idTo: ID!): Event
+   deleteUserfriend(id: ID!): Event
+
+
+   #Userrestaurant
+   createUserrestaurant(idFrom: ID!, idTo: ID!): Event
+   deleteUserrestaurant(id: ID!): Event
+
+
+   #Restaurantuser
+   createRestaurantuser(idFrom: ID!, idTo: ID!): Event
+   deleteRestaurantuser(id: ID!): Event
+
+
+   #Restaurantuserreview
+   createRestaurantuserreview(idFrom: ID!, idTo: ID!, hisName: String!, text: String!): Event
+   deleteRestaurantuserreview(r_id: ID!): Event
+   editRestaurantuserreview(r_id: ID!, text: String!): Event
+
+
+   #Restaurantuserreviewpersonalization
+   createRestaurantuserreviewpersonalization(idFrom: ID!, idTo: ID!, hisId: ID!, hisName: String!, useful: Boolean!): Event
+   deleteRestaurantuserreviewpersonalization(p_id: ID!): Event
+   editRestaurantuserreviewpersonalization(p_id: ID!, useful: Boolean!): Event
+}
+
+
+type Subscription {
+   #User
+   onCreateUser: Event
+      @aws_subscribe(mutations: ["createUser"])
+   onDeleteUser: Event
+      @aws_subscribe(mutations: ["deleteUser"])
+
+
+   #Restaurant
+   onCreateRestaurant: Event
+      @aws_subscribe(mutations: ["createRestaurant"])
+   onDeleteRestaurant: Event
+      @aws_subscribe(mutations: ["deleteRestaurant"])
+
+
+   #Userfriend
+   onCreateUserfriend: Event
+      @aws_subscribe(mutations: ["createUserfriend"])
+   onDeleteUserfriend: Event
+      @aws_subscribe(mutations: ["deleteUserfriend"])
+
+
+   #Userrestaurant
+   onCreateUserrestaurant: Event
+      @aws_subscribe(mutations: ["createUserrestaurant"])
+   onDeleteUserrestaurant: Event
+      @aws_subscribe(mutations: ["deleteUserrestaurant"])
+
+
+   #Restaurantuser
+   onCreateRestaurantuser: Event
+      @aws_subscribe(mutations: ["createRestaurantuser"])
+   onDeleteRestaurantuser: Event
+      @aws_subscribe(mutations: ["deleteRestaurantuser"])
+
+
+   #Restaurantuserreview
+   onCreateRestaurantuserreview: Event
+      @aws_subscribe(mutations: ["createRestaurantuserreview"])
+   onDeleteRestaurantuserreview: Event
+      @aws_subscribe(mutations: ["deleteRestaurantuserreview"])
+   onEditRestaurantuserreview: Event
+      @aws_subscribe(mutations: ["editRestaurantuserreview"])
+
+
+   #Restaurantuserreviewpersonalization
+   onCreateRestaurantuserreviewpersonalization: Event
+      @aws_subscribe(mutations: ["createRestaurantuserreviewpersonalization"])
+   onDeleteRestaurantuserreviewpersonalization: Event
+      @aws_subscribe(mutations: ["deleteRestaurantuserreviewpersonalization"])
+   onEditRestaurantuserreviewpersonalization: Event
+      @aws_subscribe(mutations: ["editRestaurantuserreviewpersonalization"])
+}

@@ -1,0 +1,15 @@
+.registerrestaurantpage {
+    //for cover entire screen of any size
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    //for cover entire screen of any size
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,14 @@
+export { default as HomePage } from './HomePage';
+export { default as SigninPage } from './SigninPage';
+export { default as SignupPage } from './SignupPage';
+export { default as UserslistPage } from './UserslistPage';
+export { default as RestaurantslistPage } from './RestaurantslistPage';
+export { default as UserprofilePage } from './UserprofilePage';
+export { default as RestaurantprofilePage } from './RestaurantprofilePage';
+export { default as WelcomePage } from './WelcomePage';
+export { default as RegisterrestaurantPage } from './RegisterrestaurantPage';
+export { default as MyfriendslistPage } from './MyfriendslistPage';
+export { default as MyrestaurantslistPage } from './MyrestaurantslistPage';
+export { default as HisfriendslistPage } from './HisfriendslistPage';
+export { default as HisrestaurantslistPage } from './HisrestaurantslistPage';
+export { default as RestaurantcustomerslistPage } from './RestaurantcustomerslistPage';

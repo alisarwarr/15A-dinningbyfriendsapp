@@ -1,0 +1,108 @@
+var arr1 = [
+    {
+        "r_id": "H_EW_LjposmcLBzcPRJOC",
+    },
+    {
+        "r_id": "-ww5MnKbCUNjFdhspDV1m"
+    }
+];
+
+
+
+var arr2  = [
+    {
+        "p_reviewId_ExistInReviewsVertex": "-ww5MnKbCUNjFdhspDV1m"
+    }
+];
+
+
+
+arr1 = arr1.map(obj => { return { _review: {...obj} } });
+/*
+    [
+        {
+            _review: {
+                r_id:"H_EW_LjposmcLBzcPRJOC"
+            }
+        },
+        {
+            _review: {
+                r_id:"-ww5MnKbCUNjFdhspDV1m"
+            }
+        }
+    ]
+*/
+
+
+
+for(var { _review: obj } of arr1) {
+    /* check one by one for every review */
+    const result = arr2
+                /* check that any ( personalization review id ) is same as ( review id ) or not */
+                  .filter(({ p_reviewId_ExistInReviewsVertex }) => p_reviewId_ExistInReviewsVertex === obj.r_id)[0]
+    /*
+        undefined
+
+        {
+            p_reviewId_ExistInReviewsVertex:"-ww5MnKbCUNjFdhspDV1m"
+        }
+    */
+
+
+
+    /* if same then replace ( review ) with ( review with personlizations ) */
+    if(result !== undefined) {
+        const hold = arr1
+                    .filter(({ _review: { r_id } }) => r_id === obj.r_id)[0];
+                    console.log(hold)
+        /*
+            {
+                _review: {
+                    r_id:"-ww5MnKbCUNjFdhspDV1m"
+                }
+            }
+        */
+        
+
+        /* remove that particular ( review ) */
+        arr1 = arr1
+               .filter(({ _review: { r_id } }) => r_id !== obj.r_id);
+
+
+        /* add that particular ( review with personalization ) */
+        arr1.push({
+            ...hold,
+           _personalization: { ...result }
+        });
+        /*
+            {
+                _review: {
+                    r_id:"-ww5MnKbCUNjFdhspDV1m"
+                },
+                _personalization: {
+                    p_reviewId_ExistInReviewsVertex:"-ww5MnKbCUNjFdhspDV1m"
+                }
+            }
+        */
+    }
+}
+
+
+
+/*
+    [
+        {
+            _review: {
+                r_id:"H_EW_LjposmcLBzcPRJOC"
+            }
+        }
+        {
+            _review: {
+                r_id:"-ww5MnKbCUNjFdhspDV1m"
+            },
+            _personalization: {
+                p_reviewId_ExistInReviewsVertex:"-ww5MnKbCUNjFdhspDV1m"
+            }
+        }
+    ]
+*/

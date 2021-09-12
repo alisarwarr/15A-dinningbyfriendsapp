@@ -1,0 +1,164 @@
+@import './HomePage.scss';
+@import './SignupPage.scss';
+@import './SigninPage.scss';
+@import './UserslistPage.scss';
+@import './RestaurantslistPage.scss';
+@import './UserprofilePage.scss';
+@import './RestaurantprofilePage.scss';
+@import './RegisterrestaurantPage.scss';
+@import './WelcomePage.scss';
+
+
+
+
+
+
+
+//fixed moved screen when sweetalert called on 'welcome' page
+body { padding-right: 0 !important; }
+//fixed moved screen when sweetalert called on 'welcome' page
+
+
+
+
+
+
+
+* {
+    margin: 0;
+    overflow-x: hidden !important;
+    
+    #bg1 {
+        background-color: #000000;
+    }  
+    #bg2 {
+        background-color: #d4d3d3;
+    }
+    #form1 {
+        input {
+            color: #d4d3d3 !important;
+        }
+
+        label {
+            color: #b1afaf !important;
+        }
+    }
+    #form2 {
+        input {
+            color: #292626 !important;
+        }
+    }                       
+    button {
+        outline: none !important;
+        overflow: hidden !important;
+    }
+    a, #stylelikeanchor {
+        text-decoration: none !important;
+        font-family: myfont !important;
+        font-size: 0.875rem !important; 
+        outline: none !important;
+        overflow: hidden !important;
+        &:hover {
+            color: #a57552 !important;
+            cursor: pointer !important; 
+        }
+        //boostrap outline onclick
+        &:focus {
+            outline: none !important;
+        }
+    }
+    .swal2-icon-show, .swal2-popup.swal2-toast .swal2-icon, .swal2-icon-content {
+        //sweetalert toast icon overflow
+        overflow-y: hidden !important;
+    }
+    .MuiButton-label {
+        overflow-y: hidden !important;
+    }
+    #design, #fontfam {
+        font-family: myfont !important;
+        overflow-y: hidden !important;
+    }
+    .MuiTypography-root {
+        //mui typography
+        font-family: myfont !important;
+    }
+    //bootstrap button shadow none
+    .btn:focus, .btn:active:focus, .btn.active:focus {
+        box-shadow: none !important;
+    }
+}
+@font-face {
+    src: url("./myfont.ttf");
+    font-family: myfont;
+}
+
+
+
+
+
+
+
+#darkRespectText {
+    color: #000000;
+}
+#lightRespectText {
+    color: #d4d3d3;
+}
+#darkRespectTextOutlined {
+    color: #000000 !important;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: #d4d3d3;
+}
+#lightRespectTextOutlined {
+    color: #d4d3d3 !important;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: #000000;
+}
+#darkRespectAll {
+    color: #d4d3d3;
+    background-color: #000000;
+
+    button {
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0.605rem;
+        width: 5.625rem;
+        margin-right: 0.5rem;
+        font-weight: bold;
+        letter-spacing: 0.075rem;
+        word-spacing: 0.025rem;
+        color: #000000 !important;
+        background-color: #d4d3d3;
+        border: 0.1px solid #d4d3d3;
+        &:hover {
+            color: #d4d3d3 !important;
+            background-color: #000000;
+            /* Animation */
+            transition: all 0.3s;
+        }
+    }
+}
+#lightRespectAll {
+    color: #000000;
+    background-color: #d4d3d3;
+
+    button {
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 0.605rem;
+        width: 5.625rem;
+        margin-right: 0.5rem;
+        font-weight: bold;
+        letter-spacing: 0.075rem;
+        word-spacing: 0.025rem;
+        color: #d4d3d3 !important;
+        background-color: #000000;
+        border: 0.1px solid #000000;
+        &:hover {
+            color: #000000 !important;
+            background-color: #d4d3d3;
+            /* Animation */
+            transition: all 0.3s;
+        }
+    }
+}

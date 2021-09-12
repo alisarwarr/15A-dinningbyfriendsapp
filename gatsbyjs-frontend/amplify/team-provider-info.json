@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gatsbyjsfrontend-dev-32557-authRole",
+      "UnauthRoleArn": "arn:aws:iam::902276074505:role/amplify-gatsbyjsfrontend-dev-32557-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::902276074505:role/amplify-gatsbyjsfrontend-dev-32557-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-gatsbyjsfrontend-dev-32557-deployment",
+      "UnauthRoleName": "amplify-gatsbyjsfrontend-dev-32557-unauthRole",
+      "StackName": "amplify-gatsbyjsfrontend-dev-32557",
+      "StackId": "arn:aws:cloudformation:us-east-2:902276074505:stack/amplify-gatsbyjsfrontend-dev-32557/402c6c40-134f-11ec-8bbc-0620fe8a6bae"
+    }
+  }
+}

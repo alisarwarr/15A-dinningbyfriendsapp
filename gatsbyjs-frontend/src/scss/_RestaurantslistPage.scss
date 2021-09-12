@@ -1,0 +1,49 @@
+.restaurantslistpage {
+    //for cover entire screen of any size
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    //for cover entire screen of any size
+
+
+    .card {
+        img, h5, p, button {
+            font-family: myfont !important;
+            overflow-y: hidden !important;
+        }
+
+        button {
+            outline: none !important;
+            box-shadow: none !important;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 0.035rem;
+            word-spacing: 0.025rem;
+        }
+    }
+}
+
+
+
+
+
+
+//stylish scrollbar
+.restaurantslistpage::-webkit-scrollbar {
+    width: 0.855rem;
+    background:lightgray;
+    border-radius: 15px;
+}
+.restaurantslistpage::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,255,1); 
+    border-radius: 15px;
+}
+.restaurantslistpage::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    background: #91c090;
+}
+//stylish scrollbar
